@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -17,6 +18,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
+	e.GET("/", Welcome)
 	e.GET("/get-user", GetUser)
 	e.GET("/get-order", GetOrder)
 	e.GET("/get-product", GetProduct)
@@ -26,6 +28,12 @@ func main() {
 }
 
 // Handler
+func Welcome(c echo.Context) error {
+	welcome := fmt.Sprintln("Welcome To Website Test API \n 1. /get-user \n 2. /get-order \n 3. /get-product")
+
+	return c.String(http.StatusOK, welcome)
+}
+
 func GetUser(c echo.Context) error {
 	return c.String(http.StatusOK, "Data User Berhasil di Get")
 }
