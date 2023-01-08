@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -21,7 +22,7 @@ func main() {
 	e.GET("/get-product", GetProduct)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":"))
+	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
 }
 
 // Handler
