@@ -24,7 +24,13 @@ func main() {
 	e.GET("/get-product", GetProduct)
 
 	// Start server
+	os.Setenv("PORT", "8080")
 	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+}
+
+type jsonResponse struct {
+	Data   string `json:"data"`
+	Status bool   `json:"status"`
 }
 
 // Handler
@@ -35,13 +41,28 @@ func Welcome(c echo.Context) error {
 }
 
 func GetUser(c echo.Context) error {
-	return c.String(http.StatusOK, "Data User Berhasil di Get")
+	response := jsonResponse{
+		Data:   "Data User Berhasil di Get",
+		Status: true,
+	}
+
+	return c.JSON(http.StatusOK, response)
 }
 
 func GetOrder(c echo.Context) error {
-	return c.String(http.StatusOK, "Data Order Berhasil di Get")
+	response := jsonResponse{
+		Data:   "Data Order Berhasil di Get",
+		Status: true,
+	}
+
+	return c.JSON(http.StatusOK, response)
 }
 
 func GetProduct(c echo.Context) error {
-	return c.String(http.StatusOK, "Data Product Berhasil di Get")
+	response := jsonResponse{
+		Data:   "Data Product Berhasil di Get",
+		Status: true,
+	}
+
+	return c.JSON(http.StatusOK, response)
 }
