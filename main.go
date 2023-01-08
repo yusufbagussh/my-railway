@@ -24,7 +24,6 @@ func main() {
 	e.GET("/get-product", GetProduct)
 
 	// Start server
-	os.Setenv("PORT", "8080")
 	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
 }
 
