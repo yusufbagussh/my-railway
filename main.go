@@ -36,7 +36,7 @@ type jsonResponse struct {
 
 // Handler
 func Welcome(c echo.Context) error {
-	welcome := fmt.Sprintln("Welcome To Website Test API \n 1. /get-user \n 2. /get-order \n 3. /get-product")
+	welcome := fmt.Sprintln("Welcome To Website Test API \n 1. /get-user \n 2. /get-order \n 3. /get-product \n 4. /get-payment")
 
 	return c.String(http.StatusOK, welcome)
 }
