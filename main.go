@@ -22,6 +22,7 @@ func main() {
 	e.GET("/get-user", GetUser)
 	e.GET("/get-order", GetOrder)
 	e.GET("/get-product", GetProduct)
+	e.GET("/get-payment", GetPayment)
 	e.GET("/get-city", GetCity)
 
 	// Start server
@@ -52,6 +53,15 @@ func GetUser(c echo.Context) error {
 func GetOrder(c echo.Context) error {
 	response := jsonResponse{
 		Data:   "Data Order Berhasil di Get",
+		Status: true,
+	}
+
+	return c.JSON(http.StatusOK, response)
+}
+
+func GetPayment(c echo.Context) error {
+	response := jsonResponse{
+		Data:   "Data Payment Berhasil di Get",
 		Status: true,
 	}
 
